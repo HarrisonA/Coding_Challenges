@@ -25,7 +25,7 @@
  *
  */
 
- //MVP solution
+//MVP solution
 var balancedParens = function(input){
 
   // loop through the string and return false if the first parenths found is a closed parens )
@@ -35,7 +35,7 @@ var balancedParens = function(input){
   var firstParFound = false;
   var firstBraFound = false;
   var firstCurlFound = false;
-  
+
   var latest = [];
   var openParCount = 0;
   var closedParCount = 0;
@@ -50,131 +50,107 @@ var balancedParens = function(input){
   var braCount = 0;
   var curlCount = 0;
 
-
-
-
-
   for (var i = 0; i < input.length; i++) {
     if ((input[i] === ')') && !firstParFound && (openBraCount !== 0) && (openCurlCount !== 0)) {
-    	console.log(input, "false");
-    	return false;
-    }
+      return false;
+    };
+
     if (input[i] === '}' && !firstCurlFound && (openParCount !== 0) && (openBraCount !== 0)) {
-    	console.log(input, "false");
-    	return false;
-    }
+      return false;
+    };
+
     if (input[i] === ']' && !firstBraFound && (openParCount !== 0) && (openCurlCount !== 0)) {
-    	console.log(input, "false");
-    	return false;
-    }
+      return false;
+    };
 
     // Check for closing the a type of parens to early
     if (input[i] === ')' &&  latest[latest.length-1] !== '('){
-      console.log(input, "false");
       return false;
     }
 
     if (input[i] === '}' &&  latest[latest.length-1] !== '{'){
-      console.log(input, "false");
       return false;
 
     }
 
     if (input[i] === ']' &&  latest[latest.length-1] !== '['){
-      console.log(input, "false");
       return false;
 
     }
 
-   
-
-
-  // check if found the matching close 
-  if (input[i] === ')'){
-    closedParCount++;
-    if (openParCount === closedParCount){
-      latest.pop();
-      firstParFound = false;
+    // check if found the matching close 
+    if (input[i] === ')'){
+      closedParCount++;
+      if (openParCount === closedParCount){
+        latest.pop();
+        firstParFound = false;
+      }
+      continue;
     }
-    continue;
-  }
 
 
-if (input[i] === ']'){
-    closedBraCount++;
-    if (openBraCount === closedBraCount){
-      latest.pop();
-      firstBraFound = false;
+    if (input[i] === ']'){
+      closedBraCount++;
+      if (openBraCount === closedBraCount){
+        latest.pop();
+        firstBraFound = false;
+      }
+      continue;
     }
-    continue;
-  }
 
 
-  if (input[i] === ')'){
-    closedCurlCount++;
-    if (openCurlCount === closedCurlCount){
-      latest.pop();
-      firstCurlFound = false;
+    if (input[i] === ')'){
+      closedCurlCount++;
+      if (openCurlCount === closedCurlCount){
+        latest.pop();
+        firstCurlFound = false;
+      }
+      continue;
     }
-    continue;
-  }
 
-// Check if first type of parens has been found
-   if ((input[i] === '(') && !firstParFound) {
-     firstParFound = true;
-     latest.push(input[i]);
-     openParCount++;
-     continue;
+    // Check if first type of parens has been found
+    if ((input[i] === '(') && !firstParFound) {
+      firstParFound = true;
+      latest.push(input[i]);
+      openParCount++;
+      continue;
 
-   }
+    }
 
-   if ((input[i] === '[') && !firstBraFound) {
-     firstBraFound = true;
-     latest.push(input[i]);
-     openBraCount++;
-     continue;
+    if ((input[i] === '[') && !firstBraFound) {
+      firstBraFound = true;
+      latest.push(input[i]);
+      openBraCount++;
+      continue;
 
-   }
+    }
 
-   if ((input[i] === '{') && !firstCurlFound) {
-     firstCurlFound = true;
-     latest.push(input[i]);
-     openCurlCount++;
-     continue;
-   }
+    if ((input[i] === '{') && !firstCurlFound) {
+      firstCurlFound = true;
+      latest.push(input[i]);
+      openCurlCount++;
+      continue;
+    }
 
     if (input[i] === '(') {
-    	// console.log ("open found");
       openParCount++;
 
     }
 
     if (input[i] === '[') {
-      // console.log ("open found");
       openBraCount++;
     }
 
     if (input[i] === '{') {
-      // console.log ("open found");
       openCurlCount++;
     }
-  
-}
 
-  // console.log("curl count: ", openCurlCount, closedCurlCount);
-  // console.log("bra count: ", openBraCount, closedBraCount);
-  // console.log("par count: ", openParCount, closedParCount);
-
-
+  }
 
   if ((openCurlCount === closedCurlCount) && (openBraCount === closedBraCount) && (openParCount === closedParCount)  ){
-  	// console.log(input, 'is: ', true);
-  	console.log(input, 'true');
-  	return true;
+    return true;
   }
-    console.log(input, 'false')
-	return false;
-
+  return false;
 
 };
 

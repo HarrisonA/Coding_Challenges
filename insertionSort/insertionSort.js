@@ -55,7 +55,7 @@ Array.prototype.swap = function (index1, index2){
 
  // make a copy of the input array
  for (var i=0; i<inputArr.length; i++){
- 	inputArrayCopy[i] = inputArr[i];
+ 	 inputArrayCopy[i] = inputArr[i];
  }
 
  //var sortedArr = [];  // might need this
@@ -71,24 +71,20 @@ Array.prototype.swap = function (index1, index2){
 
 
  for (var i=1; i<length; i++){  //i loop is for the the sorted array
- 	for (var j=i; j>=0; j--){ //j loop is for the comparison 
- 		if (inputArrayCopy[j-1]===undefined){break;}
+   for (var j=i; j>=0; j--){ //j loop is for the comparison 
+  	 if (inputArrayCopy[j-1]===undefined){break;}
 
- 		if (inputArrayCopy[j].value<inputArrayCopy[j-1].value){
- 			inputArrayCopy.swap(j,j-1);
- 			
- 		} else if ( (inputArrayCopy[j].value === inputArrayCopy[j-1].value) ){
- 			if(inputArrayCopy[j].order<inputArrayCopy[j-1].order){
- 			 	inputArrayCopy.swap(j,j-1);
- 			 	break;
- 			 }
- 		}
- 	}
+  	 if (inputArrayCopy[j].value<inputArrayCopy[j-1].value){
+  	 	 inputArrayCopy.swap(j,j-1);
+  		
+  	 } else if ( (inputArrayCopy[j].value === inputArrayCopy[j-1].value) ){
+  		 if(inputArrayCopy[j].order<inputArrayCopy[j-1].order){
+  		   inputArrayCopy.swap(j,j-1);
+  		  break;
+  		 }
+  	}
+  }
  }
-
-
-
-
 
 };//end of insertionSort
 

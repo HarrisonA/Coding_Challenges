@@ -30,7 +30,7 @@
  * var result = boundFunc('bar');
  * result === 'foobar'; // true
  *
-*/
+ */
 
 
 
@@ -44,14 +44,14 @@ var bind = function(func, context) {
 	var extraArgs = [];  // array to hold extra arguments passed into this function
 
 	/* 3 ways to copy the arguments object into an array */
-	
-	// 1.  
-	extraArgs = Array.prototype.slice.call(arguments);
+
+	// 1.
+  extraArgs = Array.prototype.slice.call(arguments);
 	// 2.  extraArgs = [].slice.call(arguments);
 	// 3. for (var key in arguments){
 	//			extraArgs.push(arguments[key]);
 	// 		}
-	
+
 	extraArgs.splice(0, 2);  // remove the first two elements of an array
 														// extraArgs.shift();   <-- ROOKIE WAY TO DO IT
 														// extraArgs.shift();
@@ -65,34 +65,34 @@ var bind = function(func, context) {
 
 	}  //end of anon function
   return anonFunction  // return the 
-};  
+};
 
 
 
 // TEST OUT bind
-var func = function(a, b){ 
+var func = function(a, b){
 	return a + b
 };
 
- var boundFunc = bind(func, null, 'foo');
- // bind arguments are FXN, context, inputArgs
- // returns the function its context and the input args
+var boundFunc = bind(func, null, 'foo');
+// bind arguments are FXN, context, inputArgs
+// returns the function its context and the input args
 
- var result = boundFunc('bar');
- console.log(result);
+var result = boundFunc('bar');
+console.log(result);
 
 // Another Test of bind
 var alice = {
-   name: 'alice',
-   shout: function(){
-      console.log(this.name);
-    }
- }
+	name: 'alice',
+	shout: function(){
+		console.log(this.name);
+	}
+}
 
- var boundShout = bind(alice.shout, alice);
- boundShout();
+var boundShout = bind(alice.shout, alice);
+boundShout();
 
- 
+
 /*
  * Function.prototype.bind:
  *
@@ -116,9 +116,9 @@ var alice = {
  * var result = boundFunc('bar');
  * result === 'foobar'; // true
  *
-*/
+ */
 
-Function.prototype.bind = function(
-) {
+ Function.prototype.bind = function(
+ 	) {
   // TODO: Your code here
 };

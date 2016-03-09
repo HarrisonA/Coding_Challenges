@@ -103,7 +103,7 @@ resultArray.sort(someFunction2);
 console.log("\nresultArray after key sort", resultArray)
 
 
-/
+
 
 
 // Loop through the return array and look for values that are the same

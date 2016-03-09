@@ -27,4 +27,4 @@ var bubbleSort = function (array) {
 };
 
 bubbleSort([2, 1, 3, 11, 4, 56, 1, 3, 1, 32, 0]);
-console.log("Number of sorts: ", counter); 
+console.log("Number of sorts: ", counter);

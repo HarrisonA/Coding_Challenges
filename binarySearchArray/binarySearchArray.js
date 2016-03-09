@@ -35,7 +35,7 @@ var binarySearch = function (array, target) {
       // if not see if the target is < than the middle
         // if so call the a recursive binary search with the target and the sub array up to that middle index
         // if not, same as above but with the sub array starting at middle index +1 till the end of the array
-      
+
     if (subArray[middleIndex] === target) {
       found = middleIndex + refIndex;
       return;
@@ -63,7 +63,7 @@ var binarySearch = function (array, target) {
 
 var index = binarySearch([-4, -3, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], -3);
 
-console.log(index);
+console.log(index)
 
 
 

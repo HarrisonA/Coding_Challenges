@@ -90,32 +90,32 @@ TGAmakeChange(2, [1,2,3]);
 
 
  //My solution 
-var currency = {
-"1": 1,
-"2": 2,
-"5": 5, 
-"10": 10,
-"20": 20,
-"50": 50,
-"100": 100,
-"200": 200,
-}
+ var currency = {
+ 	"1": 1,
+ 	"2": 2,
+ 	"5": 5, 
+ 	"10": 10,
+ 	"20": 20,
+ 	"50": 50,
+ 	"100": 100,
+ 	"200": 200,
+ }
 
-cArray = [200, 100, 50, 20, 10, 5 ,2 ,1];
-
-
-var makeChange = function(total){
-	var resultArr =[];
-	var comboArr = [];
-	var danger = 0;
+ cArray = [200, 100, 50, 20, 10, 5 ,2 ,1];
 
 
+ var makeChange = function(total){
+ 	var resultArr =[];
+ 	var comboArr = [];
+ 	var danger = 0;
 
-	var changeMaker = function (input, largestNum, totalSoFar){
-		danger++;
-		if (danger>200){ 
-			console.log("stackOVERFLOW!!\n\n");
-			return
+
+
+ 	var changeMaker = function (input, largestNum, totalSoFar){
+ 		danger++;
+ 		if (danger>200){ 
+ 			console.log("stackOVERFLOW!!\n\n");
+ 			return
 		}  // stack overflow protection
 		
 		if (input === undefined){return}
