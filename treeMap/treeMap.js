@@ -40,9 +40,8 @@ var Tree = function(value){
 
 Tree.prototype.map = function (callback) {
 
-// create a variable for the Tree copy
-var treeCopy = new Tree();
-
+  // create a variable for the Tree copy
+  var treeCopy = new Tree();
 
   // create a recurisve function that will run the call back on each node
   // of the original tree and the copy tree

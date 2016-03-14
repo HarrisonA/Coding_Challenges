@@ -30,31 +30,27 @@
 */
 
 // Go through the input array and check all contiguous sum possibilities 
-// 
+
 var sumArray = function(array) {
-	// Create a variable to hold the largest sum found
-	var largestSumFound = 0;
-	// loop thru all possiblities and keep track of the largest sum found
+  // Create a variable to hold the largest sum found
+  var largestSumFound = 0;
+  // loop thru all possiblities and keep track of the largest sum found
 
-	// check for individual element sums
-	for (var i=0; i<array.length; i++){
-		if (array[0]>largestSumFound){
-			largestSumFound = array[0];
-		}
-	}
-	
-	// add up all elements and check that versus the largest
-	var sumOfAllElements = 0;
-	for (var i=0; i<array.length; i++){
-		sumOfAllElements+=array[i];
-	}
-	if (sumOfAllElements>largestSumFound){
-		largestSumFound = sumOfAllElements;
-	}
+  // check for individual element sums
+  for (var i=0; i<array.length; i++){
+    if (array[0]>largestSumFound){
+      largestSumFound = array[0];
+    }
+  }
 
-
-
-
+  // add up all elements and check that versus the largest
+  var sumOfAllElements = 0;
+  for (var i=0; i<array.length; i++){
+    sumOfAllElements+=array[i];
+  }
+  if (sumOfAllElements>largestSumFound){
+    largestSumFound = sumOfAllElements;
+  }
 
 
 return largestSumFound;

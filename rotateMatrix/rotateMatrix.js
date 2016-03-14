@@ -64,12 +64,12 @@ var rotateMatrix = function(matrix, dir) {
   // 3,3 --> (3,0)
 
   if (dir===1 || dir===undefined){
-  	// rotate 90
+    // rotate 90
   } else if (dir=== -1){
-  	// rotate -90
+    // rotate -90
   } else {
-  	console.log("illegal rotation parameter");
-  	return
+    console.log("illegal rotation parameter");
+    return
   }
 
 
@@ -84,41 +84,41 @@ var rotateMatrix = function(matrix, dir) {
   // return
 
   if(dir===1 || dir===undefined){
-		  // Loop through each column
-		  for (var  j= 0; j <jlength; j++) {
+      // Loop through each column
+      for (var  j= 0; j <jlength; j++) {
 
-		  	// var to hold the new row for the result matrix
-		  	var tempArr = [];
+        // var to hold the new row for the result matrix
+        var tempArr = [];
 
-		    // loop through each row, starting from the last one
-		  	for (var i = ilength-1; i >= 0; i--) {
+        // loop through each row, starting from the last one
+        for (var i = ilength-1; i >= 0; i--) {
 
-		  		// push each element into a temp array
-		  		tempArr.push(matrix[i][j]);
+          // push each element into a temp array
+          tempArr.push(matrix[i][j]);
 
-		  	}
-		  	// push the temp array into the result matrix
-		  	rotMatrix.push(tempArr);
-		  }
+        }
+        // push the temp array into the result matrix
+        rotMatrix.push(tempArr);
+      }
   }
 
     if(dir === -1){
-		  // Loop through each column, starting form the last one
-		  for (var  j= jlength-1; j>=0; j--) {
+      // Loop through each column, starting form the last one
+      for (var  j= jlength-1; j>=0; j--) {
 
-		  	// var to hold the new row for the result matrix
-		  	var tempArr = [];
+        // var to hold the new row for the result matrix
+        var tempArr = [];
 
-		    // loop through each row, starting from the first one
-		  	for (var i = 0; i< ilength; i++) {
+        // loop through each row, starting from the first one
+        for (var i = 0; i< ilength; i++) {
 
-		  		// push each element into a temp array
-		  		tempArr.push(matrix[i][j]);
-		  	}
+          // push each element into a temp array
+          tempArr.push(matrix[i][j]);
+        }
 
-		  	// push the temp array into the result matrix
-		  	rotMatrix.push(tempArr);
-		  }
+        // push the temp array into the result matrix
+        rotMatrix.push(tempArr);
+      }
   }
 
 

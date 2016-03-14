@@ -80,10 +80,8 @@ var telephoneWords = function(digitString) {
   }
 
   if (numString.length === 2){
-    
   }
 
-  
 };
 
 

@@ -39,20 +39,20 @@ var shuffleDeck = function(deck) {
   var length = deck.length;
   var newDeck = [];
   var used = {};
-var danger = 0;
- while (length>0) {
-   danger++;  if(danger>1000) return console.log("stackoverflow")
+  var danger = 0;
+   while (length>0) {
+     danger++;  if(danger>1000) return console.log("stackoverflow")
 
-    var start = Math.floor(Math.random()*52);
-    console.log(start);
-    if(used[start]===undefined){
-      used[start] = true;
-      console.log("the card found: ",deck[start])
-      newDeck.push(deck[start]);
-      length--;
-    }
-}
-console.log("the final array: ",newDeck);
+     var start = Math.floor(Math.random()*52);
+     console.log(start);
+     if(used[start]===undefined){
+       used[start] = true;
+       console.log("the card found: ",deck[start])
+       newDeck.push(deck[start]);
+       length--;
+     }
+   }
+  console.log("the final array: ",newDeck);
 
 };
 

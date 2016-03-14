@@ -28,36 +28,36 @@ var DIGIT_VALUES = {
 
 
 var translateRomanNumeral = function(romanNumeral){
-// TODO: Implement me!
+  // TODO: Implement me!
 
-// create a variable to keep track of the numbers
-// create a varibble to keep track of the prev number
+  // create a variable to keep track of the numbers
+  // create a varibble to keep track of the prev number
 
-// loop through the input string
-//  //look up the roman numeral in the object
-    // check if the number is less than the previous number
-      // if so subtract out that prev number form the total and add its negative plus the current number
+  // loop through the input string
+  //  //look up the roman numeral in the object
+      // check if the number is less than the previous number
+        // if so subtract out that prev number form the total and add its negative plus the current number
 
-var total = 0;
-var prev = 0;
-var curr = 0;
+  var total = 0;
+  var prev = 0;
+  var curr = 0;
 
-for (var i = 0; i < romanNumeral.length; i++) {
-  curr = DIGIT_VALUES[romanNumeral[i]];
+  for (var i = 0; i < romanNumeral.length; i++) {
+    curr = DIGIT_VALUES[romanNumeral[i]];
 
-  if(curr>prev && i!==0){
-    total = total - prev;
-    total = total + (curr-prev);
-  } else {
-    total = total + curr;
-  }
+    if(curr>prev && i!==0){
+      total = total - prev;
+      total = total + (curr-prev);
+    } else {
+      total = total + curr;
+    }
 
-  prev = curr;
-};
-  
-console.log(total);
+    prev = curr;
+  };
+    
+  console.log(total);
 
-};
+  };
 
 translateRomanNumeral("LX")
 

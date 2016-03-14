@@ -65,7 +65,7 @@ Number.prototype.toEnglish = function () {
     // look for the key that matches that number in numbersToWord object
     // return the value
 
-  if(number<0){ 
+  if (number<0){ 
     console.log("Can't do neg numbers YET!");
     return;
   }
@@ -96,50 +96,50 @@ Number.prototype.toEnglish = function () {
      // place that in our result array variable
 */
 
-var recursiveSearch = function(number){
+  var recursiveSearch = function(number){
 
-  if (number<20){
-    numberArrayOfStrings.push(numbersToWords[number]);
-    return;
+    if (number<20){
+      numberArrayOfStrings.push(numbersToWords[number]);
+      return;
+    }
+
+    console.log ("number to check: ", number);
+    var largest10exponent = 10;
+    var largestFound = undefined;
+
+    while( (number/largest10exponent) > 1 ){
+      largestFound = largest10exponent;
+      largest10exponent = (largest10exponent*10);
+      console.log("largestfound", largestFound);
+    }
+
+    // Get the leading number as put it in a variable
+    // Example 323 / 100 === 3.23 so just get the three by rounding down
+    var startNum = Math.floor(number/largestFound);
+    console.log("leading number", startNum);  
+    // push that number into the array
+    numberArrayOfStrings.push(numbersToWords[startNum]);
+
+    // push the largest found 10 multiple into the array
+    numberArrayOfStrings.push(numbersToPlace[largestFound]);
+
+    console.log("\n", numberArrayOfStrings);
+    
+  // Find the modulo of the our original number and the largest multiple found from above
+    // that modulo now becomes the number 
+    // repeate the process from above
+
+    if(number%largestFound === 0){
+      numberArrayOfStrings.push(numbersToWords[number%largestFound]);
+      return;
+    } else {
+      // CONTINUE HERE!!!!!  SOLA
+      recursiveSearch(number%largestFound);
+    }
+         
+
+
   }
-
-  console.log ("number to check: ", number);
-  var largest10exponent = 10;
-  var largestFound = undefined;
-
-  while( (number/largest10exponent) > 1 ){
-    largestFound = largest10exponent;
-    largest10exponent = (largest10exponent*10);
-    console.log("largestfound", largestFound);
-  }
-
-  // Get the leading number as put it in a variable
-  // Example 323 / 100 === 3.23 so just get the three by rounding down
-  var startNum = Math.floor(number/largestFound);
- console.log("leading number", startNum);  
-  // push that number into the array
-  numberArrayOfStrings.push(numbersToWords[startNum]);
-
-  // push the largest found 10 multiple into the array
-  numberArrayOfStrings.push(numbersToPlace[largestFound]);
-
-  console.log("\n", numberArrayOfStrings);
-  
-// Find the modulo of the our original number and the largest multiple found from above
-  // that modulo now becomes the number 
-  // repeate the process from above
-
-  if(number%largestFound === 0){
-    numberArrayOfStrings.push(numbersToWords[number%largestFound]);
-    return;
-  } else {
-    // CONTINUE HERE!!!!!  SOLA
-    recursiveSearch(number%largestFound);
-  }
-       
-
-
-}
   // call the recursive function with our number
   recursiveSearch(number);
 

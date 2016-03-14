@@ -49,23 +49,23 @@ var hasCycle = function(linkedList){   // linked list represents a starting node
   var traversal = function (node)  {   // recursive function
   // start with the first node
   // recurse through all the next nodes
-  	// keep track of all nodes that are encoutered
-  	nodesFoundObj[node.value]= true;
+    // keep track of all nodes that are encoutered
+    nodesFoundObj[node.value]= true;
 
-  	if (node.next === null){
-  		cycleFound = false;
-  		return
-  	}
-  	// if the next node of any node is equal to a previous node, then a cycle was found
-  	if (nodesFoundObj[node.next.value]){
-  		cycleFound = true;
-  		return
-  	} else {
-  		// continue on to the next node
-  		traversal(node.next);
-  	}	
+    if (node.next === null){
+      cycleFound = false;
+      return
+    }
+    // if the next node of any node is equal to a previous node, then a cycle was found
+    if (nodesFoundObj[node.next.value]){
+      cycleFound = true;
+      return
+    } else {
+      // continue on to the next node
+      traversal(node.next);
+    } 
 
-	}
+  }
   traversal(linkedList);
   // return true or false
   return cycleFound; 
