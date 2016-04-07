@@ -54,6 +54,8 @@ Array.prototype.swap = function (index1, index2){
  var inputArrayCopy = [];
 
  // make a copy of the input array
+
+ // better way -->   inputArrayCopy = inputArr.slice();
  for (var i=0; i<inputArr.length; i++){
  	 inputArrayCopy[i] = inputArr[i];
  }
@@ -74,7 +76,8 @@ Array.prototype.swap = function (index1, index2){
    for (var j=i; j>=0; j--){ //j loop is for the comparison 
   	 if (inputArrayCopy[j-1]===undefined){break;}
 
-  	 if (inputArrayCopy[j].value<inputArrayCopy[j-1].value){
+  	 if (inputArrayCopy[j].value<inputArrayCopy[j-1].value  || 
+     (inputArrayCopy[j]<inputArrayCopy[j-1])){
   	 	 inputArrayCopy.swap(j,j-1);
   		
   	 } else if ( (inputArrayCopy[j].value === inputArrayCopy[j-1].value) ){
@@ -86,10 +89,13 @@ Array.prototype.swap = function (index1, index2){
   }
  }
 
+console.log(inputArrayCopy)
 };//end of insertionSort
 
 
 insertionSort([{value: 10}, {value: 5, order: 2}, {value: 5, order: 1}]);
+ insertionSort([9,4,5,8,7,1,2])
+
  /*
  * EXTRA CREDIT:
  *
@@ -120,8 +126,8 @@ var testingTransform = function(array) {
   return transform;
 };
 
-var insertionSort = function(array
-) {
-  // Your code goes here. Feel free to add helper functions if needed.
-  return array;
-};
+// var insertionSort = function(array
+// ) {
+//   // Your code goes here. Feel free to add helper functions if needed.
+//   return array;
+// };

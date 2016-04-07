@@ -96,6 +96,19 @@
  */
 
 
+// Slice testing
+
+var arr = [11, 77, 100];
+console.log(arr);
+// console.log(arr.join());
+
+arr.splice(2, 0, 99);
+console.log(arr)
+// ********************
+
+
+
+
 
 var mergeSort = function(array) {
   // Your code here.

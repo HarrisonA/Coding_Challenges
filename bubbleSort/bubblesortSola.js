@@ -1,4 +1,6 @@
+'use strict'
 var counter = 0;
+var temp;
 
 var helperSort = function (somearray) {
   for (var i = 0; i < somearray.length; i++) {
@@ -14,7 +16,6 @@ var helperSort = function (somearray) {
 
 var bubbleSort = function (array) {
   // Your code here.
-  var temp;
   for (var j = array.length - 1; j >= 0; j--) {
     if (array[j] < array[j - 1]) {
       counter++;

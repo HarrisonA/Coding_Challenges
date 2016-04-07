@@ -118,11 +118,9 @@ Illustration of an iterative approach:
 // takes into two sorted arrays and merges them into one sorted array
 var mergeSortHelper = function (arr1, arr2){
   var tempArr = [];
-  // console.log("inside helper with: ", arr1, arr2);
-  for (var i = 0; i < arr1.length; i++) {
-    for (var j=0; j<arr2.length; j++){
+  for (var i=0; i < arr1.length; i++) {
+    for (var j=0; j < arr2.length; j++) {
       if(arr1[i] > arr2[j]){
-        // console.log("\n adding to tempArr:", arr2[j]);
         tempArr.push(arr2[j]);
         arr2.splice(j,1);
         // an element of arr2 was removed, so make sure the j index also goes back one
@@ -133,7 +131,6 @@ var mergeSortHelper = function (arr1, arr2){
         if (j === arr2.length-1){
           // arr[i] is greater than everything in arr2
           tempArr = tempArr.concat(arr1);
-          // console.log("\n\nthe final array:", tempArr);
           return tempArr;
         }
         continue;
@@ -168,15 +165,12 @@ var mergeSortHelper = function (arr1, arr2){
   return(tempArr);
 }
 
-// testing
-// mergeSortHelper([3, 3, 11, 14, 21], [2, 3, 5, 14, 17]);
 
 
 var mergeSort = function(array) {
   // Your code here.
 
   // First loop through the array and put each element into a sub array
-  var totalSteps = Math.floor(array.length/2);
   var resultArr = [];
   var tempArr = [];
   for (var i = 0; i < array.length; i++) {
@@ -194,16 +188,16 @@ var mergeSort = function(array) {
 
       // remove and save the last elem
       var lastElem = resultArr.splice(resultArr.length-1, 1);
-      var lastElem = lastElem[0];
+      lastElem = lastElem[0];
 
       // mergesort the lastElem var with last elem of resultArr
-      resultArr[resultArr.length-1] = mergeSortHelper(lastElem, resultArr[resultArr.length-1])      
+      resultArr[resultArr.length-1] = mergeSortHelper(lastElem, resultArr[resultArr.length-1]);
     }
 
     for (var i = 0; i < resultArr.length; i=i+1) {
       // combine every two elements and sort
       resultArr[i] = mergeSortHelper(resultArr[i], resultArr[i+1]);
-      resultArr.splice(i+1, 1);
+      resultArr.splice(i+1, 1); //remove the i+1 elem since you just merged it into resultArr[i]
 
     }
 
