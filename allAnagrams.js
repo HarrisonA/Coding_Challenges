@@ -3,8 +3,12 @@
  * of a string and outputs them as an array. At first, don't worry about
  * repeated strings.  What time complexity is your solution?
  *
- * Extra credit: Deduplicate your return array without using uniq().
  */
+
+
+ // SOLVED.  My solution does not contain duplicates.
+ // Time complexity: o(n^2)
+
 
 /**
   * example usage:
