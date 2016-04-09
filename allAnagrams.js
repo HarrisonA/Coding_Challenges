@@ -16,12 +16,7 @@
   * console.log(anagrams); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
   */
 
-var swapChars = function (arr, i){
-  // i = index to swap
-  var temp = arr[i];
-  arr[i] = arr[i+1];
-  arr[i+1] = temp;
-}
+
 
 var findAnagrams = function (arr){ // arr is an array of the string elements
   var anagramList = [];
@@ -41,7 +36,7 @@ var findAnagrams = function (arr){ // arr is an array of the string elements
   // loop thru the arr and find the anagrams and concat tham with the first char
   for (var i=0; i<arr.length-1; i++){
     for (var j=i; j < arr.length-1; j++){
-      swapChars(arr, j);
+      swapWithNext(arr, j, j+1);
       currentAna = first + arr.join("");
       anagramList.push(currentAna);
     }
@@ -62,9 +57,10 @@ var allAnagrams = function(string) {
   // loop through the strArr
   // swap the element[0] with element[i]
   for (var i=0; i<strArr.length; i++){
-    var temp = strArr[0];
-    strArr[0] = strArr[i];
-    strArr[i] = temp;
+    // var temp = strArr[0];
+    // strArr[0] = strArr[i];
+    // strArr[i] = temp;
+    swapWithNext(strArr, 0, i)
 
     // now recurse to get the anagrams for that string
     anagramsFound = findAnagrams(strArr);
@@ -80,5 +76,15 @@ var allAnagrams = function(string) {
 
   return totalAnagrams;
   }
+
+
+
+// helper function
+var swapWithNext = function (arr, i, j){
+  // i = index to swap
+  var temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+}
 
 console.log(allAnagrams('abcde'));
