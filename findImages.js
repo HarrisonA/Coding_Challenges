@@ -24,7 +24,6 @@ var createDupArrary = function (array){
   return copyArr;
 };
 
-
 var getImages = function (image){
 
   var visitedArr = createDupArrary(image);
@@ -40,7 +39,8 @@ var getImages = function (image){
   var highestY;
 
 
-  var lowestOrHighest = function (x,y){
+  // update image corners through closure
+  var updateImageCorners = function (x,y){
     if(x<=lowestX && y<=lowestY) {
       lowestX = x;
       lowestY = y;
@@ -51,69 +51,79 @@ var getImages = function (image){
       highestY = y;
 
     }
-  }
+  };
 
-  // Add later (modularity)
-  // var getChildren = function (x,y){
-  //   }
-  //}
+  //Add later (modularity)
+  var getChildren = function (xCoord, yCoord){
+    var arrOfKids = [];
+
+    //top child
+    if((image[xCoord-1] !== undefined) && (visitedArr[xCoord-1][yCoord]===false)){
+      visitedArr[xCoord-1][yCoord] = true;
+      if(image[xCoord-1][yCoord] === 0){
+        arrOfKids.push([xCoord-1,yCoord]);
+      }
+    }
+
+    //bottom child
+    if((image[xCoord+1] !== undefined) && (visitedArr[xCoord+1][yCoord] === false)) {
+      visitedArr[xCoord+1][yCoord] = true;
+      if(image[xCoord+1][yCoord] === 0){
+        arrOfKids.push([xCoord+1,yCoord]);
+      }
+    }
+
+    //left child
+    if((image[xCoord][yCoord-1] !== undefined) && (visitedArr[xCoord][yCoord-1] === false)){
+      visitedArr[xCoord][yCoord-1] = true;
+      if(image[xCoord][yCoord-1] === 0){
+        arrOfKids.push([xCoord,yCoord-1]);
+      }
+    }
+
+    //right child
+    if((image[xCoord][yCoord+1] !== undefined) && (visitedArr[xCoord][yCoord+1] === false)){
+      visitedArr[xCoord][yCoord+1] = true;
+      if(image[xCoord][yCoord+1] === 0){
+        arrOfKids.push([xCoord,yCoord+1]);
+      }
+    }
+
+    return arrOfKids;
+  };
 
 
   var recurseChildren = function(arrayOfCoords){  // array of [x,y] coords
-    var childrenArray = [];
+    var allChildren = [];
+    var childrenOfASingleNode = [];
 
     // loop through the array of coordinates and get children
     for(var i=0; i<arrayOfCoords.length; i++){
 
-      var xCoord = arrayOfCoords[i][0];
-      var yCoord = arrayOfCoords[i][1];
+      var x = arrayOfCoords[i][0];
+      var y = arrayOfCoords[i][1];
 
       // mark visited
-      visitedArr[xCoord][yCoord] = true;
+      visitedArr[x][y] = true;
 
       // check if this coord is the lowest [x,y] or highest [x,y]
       // to find the top/left corner and bottom/right
-      lowestOrHighest(xCoord, yCoord);
+      updateImageCorners(x, y);
 
       // get children of the current element
-      // (IMPORTANT THIS SHOULD BE IN ITS OWN FUNCTION)
+      childrenOfASingleNode = getChildren(x, y);
 
-      //top child
-      if((image[xCoord-1] !== undefined) && (visitedArr[xCoord-1][yCoord]===false)){
-        visitedArr[xCoord-1][yCoord] = true;
-        if(image[xCoord-1][yCoord] === 0){
-          childrenArray.push([xCoord-1,yCoord]);
-        }
-      }
-      //bottom child
-      if((image[xCoord+1] !== undefined) && (visitedArr[xCoord+1][yCoord] === false)) {
-        visitedArr[xCoord+1][yCoord] = true;
-        if(image[xCoord+1][yCoord] === 0){
-          childrenArray.push([xCoord+1,yCoord]);
-        }
-      }
-      //left child
-      if((image[xCoord][yCoord-1] !== undefined) && (visitedArr[xCoord][yCoord-1] === false)){
-        visitedArr[xCoord][yCoord-1] = true;
-        if(image[xCoord][yCoord-1] === 0){
-          childrenArray.push([xCoord,yCoord-1]);
-        }
-      }
-      //right child
-      if((image[xCoord][yCoord+1] !== undefined) && (visitedArr[xCoord][yCoord+1] === false)){
-        visitedArr[xCoord][yCoord+1] = true;
-        if(image[xCoord][yCoord+1] === 0){
-          childrenArray.push([xCoord,yCoord+1]);
-        }
-      }
+      // add each child of the current element into the allChildren array
+      childrenOfASingleNode.forEach(function(child){
+        allChildren.push(child);
+      });
 
     }
 
     // recurse on the array of children, if they exist
-    if (childrenArray.length){
-      recurseChildren(childrenArray);
+    if (allChildren.length){
+      recurseChildren(allChildren);
     }
-
   };
 
 
@@ -144,4 +154,5 @@ return imagesFound;
 
 };
 
+console.log(getImages(image));
 
