@@ -5,10 +5,9 @@
  *
  */
 
-
  // SOLVED.  My solution does not contain duplicates.
  // Time complexity: o(n^2)
-
+ // Solution explained at the end of this file
 
 /**
   * example usage:
@@ -26,7 +25,7 @@ var findAnagrams = function (arr){ // arr is an array of the string elements
   anagramList.push(firstAnagram);
   var currentAna = "";
 
-  // remove the first char
+  // remove the first char (to be concated with all combinations of the remaining letters)
   var first = arr.shift();
 
   // make a copy of the arr, for resetting purposes
@@ -57,9 +56,6 @@ var allAnagrams = function(string) {
   // loop through the strArr
   // swap the element[0] with element[i]
   for (var i=0; i<strArr.length; i++){
-    // var temp = strArr[0];
-    // strArr[0] = strArr[i];
-    // strArr[i] = temp;
     swapWithNext(strArr, 0, i)
 
     // now recurse to get the anagrams for that string
@@ -88,3 +84,32 @@ var swapWithNext = function (arr, i, j){
 }
 
 console.log(allAnagrams('abcde'));
+
+
+/* My approach:
+ (shift the second letter (b) from left to right)
+  abcde
+  acbde
+  acdbe
+  acdeb
+
+  reset the string to abcde
+  (shift the third letter (c) from left to right)
+  abdce
+  abdec
+
+  reset the string to abcde
+  (shift the d (fourth letter) from left to right)
+
+  e will be skipped because it the last letter
+
+  repeat the process, but now b is the first letter
+  bacde
+  bcade
+  bcdae
+  bcdea
+
+  and so on...
+
+*/
+
