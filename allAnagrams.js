@@ -74,16 +74,18 @@ var allAnagrams = function(string) {
   }
 
 
+console.log(allAnagrams('abcde'));
+
+
 
 // helper function
-var swapWithNext = function (arr, i, j){
+function swapWithNext (arr, i, j){
   // i = index to swap
   var temp = arr[i];
   arr[i] = arr[j];
   arr[j] = temp;
 }
 
-console.log(allAnagrams('abcde'));
 
 
 /* My approach:
@@ -99,7 +101,7 @@ console.log(allAnagrams('abcde'));
   abdec
 
   reset the string to abcde
-  (shift the d (fourth letter) from left to right)
+  (shift the fourth letter(d) from left to right)
 
   e will be skipped because it the last letter
 
