@@ -12,11 +12,12 @@ origin.
 
 */
 var shortestDecimalDistance = function (start, end) {
-  // check if y start and y end are in the same column
   var totalDistance;
+
+  // check if start and end are in the same column
   if (Math.abs(start - end) < 1) {
 
-    // check to see which direction is longer
+    // check to see which path is longer
     if ( Math.abs(start + end) >= ((1 - Math.abs(start)) + (1 - Math.abs(end))) ) {
       totalDistance = (1 - Math.abs(start)) + (1 - Math.abs(end));
     } else {
@@ -30,7 +31,7 @@ var shortestDecimalDistance = function (start, end) {
   return totalDistance;
 };
 
-var shortestDistance = function (startTuple, endTuple) {
+var shortestTotalDistance = function (startTuple, endTuple) {
   var sx = startTuple[0];
   var sy = startTuple[1];
   var ex = endTuple[0];
@@ -40,7 +41,6 @@ var shortestDistance = function (startTuple, endTuple) {
 
   // Both integers
   if (Number.isInteger(sx) && Number.isInteger(sy)) {
-
     return Math.abs(sx - ex) + Math.abs(sy - ey);
   }
 
@@ -56,4 +56,6 @@ var shortestDistance = function (startTuple, endTuple) {
 
 };
 
-console.log(shortestDistance([-0.4, 1], [0.9, 3]));
+
+// Test for the example input
+// console.log(shortestTotalDistance([0.4,1], [0.9,3]));
