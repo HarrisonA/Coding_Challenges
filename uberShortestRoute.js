@@ -7,7 +7,7 @@ Example:  Start pt (0.4, 1).  End pt (0.9, 3).
 Total distance travel is 2.7
 
 Input is given in the form of an start point tuple, and end pt tuple
-like in the example above.  Destiniation is given in the same was as the
+like in the example above.  Destination is given in the same way as the
 origin.
 
 */
@@ -58,4 +58,5 @@ var shortestTotalDistance = function (startTuple, endTuple) {
 
 
 // Test for the example input
-// console.log(shortestTotalDistance([0.4,1], [0.9,3]));
+console.log(shortestTotalDistance([0.4,1], [0.9,3]));
+
